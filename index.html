@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>✨ קסם הכפל של מיקה ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B9D;
+            --secondary: #FFC75F;
+            --accent: #8AC6D1;
+            --success: #73D13D;
+            --purple: #9B59B6;
+            --bg: #FFF5E6;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, #FFE5F1 0%, #FFF9E6 50%, #E6F7FF 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            direction: rtl;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,107,157,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(138,198,209,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -150px;
+            animation: float 10s ease-in-out infinite reverse;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(20px, 20px) rotate(5deg); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: bounceIn 1s ease;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        h1 {
+            font-family: 'Bubblegum Sans', cursive;
+            font-size: 3.5rem;
+            color: var(--primary);
+            text-shadow: 4px 4px 0 rgba(255,199,95,0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--purple);
+            font-weight: 600;
+        }
+
+        .score-board {
+            background: white;
+            border-radius: 30px;
+            padding: 20px 40px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .score-item {
+            text-align: center;
+        }
+
+        .score-label {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .score-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        .score-item:nth-child(1) .score-value { color: var(--success); }
+        .score-item:nth-child(2) .score-value { color: var(--primary); }
+        .score-item:nth-child(3) .score-value { color: var(--accent); }
+
+        .capybara-collection {
+            background: white;
+            border-radius: 30px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: slideDown 1s ease;
+            text-align: center;
+        }
+
+        .capybara-title {
+            font-size: 1.4rem;
+            color: var(--purple);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .capybara-title .emoji {
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+
+        .capybara-grid {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            min-height: 80px;
+        }
+
+        .capybara-item {
+            font-size: 3rem;
+            animation: popIn 0.5s ease;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0) rotate(0deg); }
+            50% { transform: scale(1.3) rotate(180deg); }
+            100% { transform: scale(1) rotate(360deg); }
+        }
+
+        .capybara-progress {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .capybara-big {
+            position: fixed;
+            font-size: 15rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: capybaraReward 2s ease;
+            pointer-events: none;
+            z-index: 1001;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+        }
+
+        @keyframes capybaraReward {
+            0% { transform: translate(-50%, -50%) scale(0) rotate(-180deg); opacity: 0; }
+            30% { transform: translate(-50%, -50%) scale(1.2) rotate(0deg); opacity: 1; }
+            70% { transform: translate(-50%, -50%) scale(1.2) rotate(0deg); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(0) rotate(180deg); opacity: 0; }
+        }
+
+        .milestone-message {
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+            color: white;
+            padding: 30px 50px;
+            border-radius: 30px;
+            font-size: 2rem;
+            font-weight: 700;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: milestoneAnim 3s ease;
+            pointer-events: none;
+            z-index: 1002;
+            text-align: center;
+        }
+
+        @keyframes milestoneAnim {
+            0% { transform: translateX(-50%) scale(0); opacity: 0; }
+            15% { transform: translateX(-50%) scale(1.1); opacity: 1; }
+            85% { transform: translateX(-50%) scale(1); opacity: 1; }
+            100% { transform: translateX(-50%) scale(0); opacity: 0; }
+        }
+
+        .game-card {
+            background: white;
+            border-radius: 40px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .question-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .question {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--purple);
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .question-mark {
+            color: var(--primary);
+        }
+
+        .answer-input {
+            width: 200px;
+            height: 80px;
+            font-size: 3rem;
+            text-align: center;
+            border: 5px solid var(--accent);
+            border-radius: 20px;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            color: var(--purple);
+            background: #FFF9E6;
+            transition: all 0.3s ease;
+            -webkit-appearance: none;
+            touch-action: manipulation;
+        }
+
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255,107,157,0.3);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 20px 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Fredoka', sans-serif;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-check {
+            background: linear-gradient(135deg, var(--success) 0%, #52c41a 100%);
+            color: white;
+        }
+
+        .btn-check:hover, .btn-check:active {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(115,209,61,0.4);
+        }
+
+        .btn-skip {
+            background: linear-gradient(135deg, var(--secondary) 0%, #ffa940 100%);
+            color: white;
+        }
+
+        .btn-skip:hover, .btn-skip:active {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(255,199,95,0.4);
+        }
+
+        .feedback {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 2rem;
+            font-weight: 700;
+            min-height: 60px;
+            animation: bounceIn 0.5s ease;
+        }
+
+        .correct {
+            color: var(--success);
+        }
+
+        .incorrect {
+            color: var(--primary);
+        }
+
+        .mode-selector {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .mode-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--purple);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .mode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .mode-card {
+            background: linear-gradient(135deg, var(--accent) 0%, #69b1c1 100%);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .mode-card:hover, .mode-card:active {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .mode-card.random {
+            background: linear-gradient(135deg, var(--primary) 0%, #ff4d7d 100%);
+        }
+
+        .mode-card.practice {
+            background: linear-gradient(135deg, var(--secondary) 0%, #ffa940 100%);
+        }
+
+        .mode-card-title {
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .mode-card-desc {
+            color: rgba(255,255,255,0.9);
+            font-size: 1rem;
+        }
+
+        .celebration {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 6rem;
+            animation: celebrate 1s ease;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @keyframes celebrate {
+            0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 0; }
+            50% { transform: translate(-50%, -50%) scale(1.5) rotate(180deg); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1) rotate(360deg); opacity: 0; }
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .star {
+            position: absolute;
+            font-size: 2rem;
+            animation: starFall 2s ease forwards;
+        }
+
+        @keyframes starFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .question { font-size: 3rem; }
+            .answer-input { width: 150px; height: 60px; font-size: 2rem; }
+            .btn { padding: 15px 30px; font-size: 1.2rem; }
+            .game-card { padding: 30px 20px; }
+        }
+
+        @media (min-width: 769px) and (max-width: 1366px) {
+            /* iPad Pro optimization */
+            .container { max-width: 1000px; }
+            h1 { font-size: 4rem; }
+            .question { font-size: 5rem; }
+            .answer-input { 
+                width: 250px; 
+                height: 100px; 
+                font-size: 3.5rem;
+                border-width: 6px;
+            }
+            .btn { 
+                padding: 25px 60px; 
+                font-size: 1.8rem;
+                min-width: 200px;
+            }
+            .game-card { padding: 60px; }
+            .score-value { font-size: 3rem; }
+            .score-label { font-size: 1.1rem; }
+            .feedback { font-size: 2.5rem; }
+            .mode-card {
+                padding: 40px;
+                min-height: 180px;
+            }
+            .mode-card-title { font-size: 1.8rem; }
+            .mode-card-desc { font-size: 1.2rem; }
+            .capybara-title { font-size: 1.8rem; }
+            .capybara-title .emoji { font-size: 2.2rem; }
+            .capybara-item { font-size: 3.5rem; }
+            .capybara-progress { font-size: 1.3rem; }
+            .capybara-big { font-size: 18rem; }
+            .milestone-message { font-size: 2.5rem; padding: 40px 60px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✨ קסם הכפל של מיקה ✨</h1>
+            <div class="subtitle">בואי נלמד בכיף!</div>
+        </div>
+
+        <div class="score-board">
+            <div class="score-item">
+                <div class="score-label">נכונות</div>
+                <div class="score-value" id="correct">0</div>
+            </div>
+            <div class="score-item">
+                <div class="score-label">רצף</div>
+                <div class="score-value" id="streak">0</div>
+            </div>
+            <div class="score-item">
+                <div class="score-label">סה״כ</div>
+                <div class="score-value" id="total">0</div>
+            </div>
+        </div>
+
+        <div class="capybara-collection">
+            <div class="capybara-title">
+                <span class="emoji">🦫</span>
+                האוסף של קפיברות!
+            </div>
+            <div class="capybara-grid" id="capybaraGrid">
+            </div>
+            <div class="capybara-progress" id="capybaraProgress">
+                ענה נכון ל-3 שאלות כדי לקבל קפיברה!
+            </div>
+        </div>
+
+        <div id="modeSelection" class="mode-selector">
+            <div class="mode-title">בחרי את סוג התרגול שלך</div>
+            <div class="mode-grid">
+                <div class="mode-card practice" onclick="startMode('specific')">
+                    <div class="mode-card-title">📚 תרגול לוח כפל</div>
+                    <div class="mode-card-desc">התמקדי בלוח כפל אחד (2-12)</div>
+                </div>
+                <div class="mode-card random" onclick="startMode('random')">
+                    <div class="mode-card-title">🎲 ערבוב אקראי</div>
+                    <div class="mode-card-desc">שאלות מכל לוחות הכפל!</div>
+                </div>
+                <div class="mode-card" onclick="startMode('range')">
+                    <div class="mode-card-title">🎯 טווח מותאם</div>
+                    <div class="mode-card-desc">בחרי את רמת הקושי</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="gameArea" class="game-card" style="display: none;">
+            <div class="question-container">
+                <div class="question">
+                    <span id="num1">7</span> × <span id="num2">8</span> <span class="question-mark">= ?</span>
+                </div>
+                <input type="number" id="answerInput" class="answer-input" placeholder="?" autocomplete="off" inputmode="numeric">
+            </div>
+            
+            <div class="button-group">
+                <button class="btn btn-check" onclick="checkAnswer()">✓ בדקי</button>
+                <button class="btn btn-skip" onclick="skipQuestion()">דלגי →</button>
+            </div>
+            
+            <div class="feedback" id="feedback"></div>
+        </div>
+    </div>
+
+    <div class="stars" id="stars"></div>
+
+    <script>
+        let currentNum1, currentNum2, correctAnswer;
+        let correctCount = 0, totalCount = 0, streakCount = 0;
+        let mode = 'random';
+        let practiceTable = 5;
+        let capybaraCount = 0;
+        let correctStreak = 0; // Track correct answers for capybara rewards
+
+        function startMode(selectedMode) {
+            if (selectedMode === 'specific') {
+                const table = prompt('איזה לוח כפל את רוצה לתרגל? (2-12)', '5');
+                if (table && table >= 2 && table <= 12) {
+                    practiceTable = parseInt(table);
+                    mode = 'specific';
+                } else {
+                    alert('בחרי מספר בין 2 ל-12!');
+                    return;
+                }
+            } else if (selectedMode === 'range') {
+                const min = prompt('מספר מינימום? (2-12)', '2');
+                const max = prompt('מספר מקסימום? (2-12)', '12');
+                if (min && max && min >= 2 && max <= 12 && min <= max) {
+                    mode = 'range';
+                    practiceTable = { min: parseInt(min), max: parseInt(max) };
+                } else {
+                    alert('בחרי מספרים תקינים!');
+                    return;
+                }
+            } else {
+                mode = 'random';
+            }
+
+            document.getElementById('modeSelection').style.display = 'none';
+            document.getElementById('gameArea').style.display = 'block';
+            generateQuestion();
+            document.getElementById('answerInput').focus();
+        }
+
+        function generateQuestion() {
+            if (mode === 'specific') {
+                currentNum1 = practiceTable;
+                currentNum2 = Math.floor(Math.random() * 11) + 2;
+                if (Math.random() > 0.5) {
+                    [currentNum1, currentNum2] = [currentNum2, currentNum1];
+                }
+            } else if (mode === 'range') {
+                const min = practiceTable.min;
+                const max = practiceTable.max;
+                currentNum1 = Math.floor(Math.random() * (max - min + 1)) + min;
+                currentNum2 = Math.floor(Math.random() * (max - min + 1)) + min;
+            } else {
+                currentNum1 = Math.floor(Math.random() * 11) + 2;
+                currentNum2 = Math.floor(Math.random() * 11) + 2;
+            }
+
+            correctAnswer = currentNum1 * currentNum2;
+            
+            document.getElementById('num1').textContent = currentNum1;
+            document.getElementById('num2').textContent = currentNum2;
+            document.getElementById('answerInput').value = '';
+            document.getElementById('feedback').textContent = '';
+        }
+
+        function checkAnswer() {
+            const userAnswer = parseInt(document.getElementById('answerInput').value);
+            const feedback = document.getElementById('feedback');
+            
+            if (isNaN(userAnswer)) {
+                feedback.textContent = '🤔 בבקשה הכניסי מספר!';
+                feedback.className = 'feedback incorrect';
+                return;
+            }
+
+            totalCount++;
+            document.getElementById('total').textContent = totalCount;
+
+            if (userAnswer === correctAnswer) {
+                correctCount++;
+                streakCount++;
+                correctStreak++;
+                document.getElementById('correct').textContent = correctCount;
+                document.getElementById('streak').textContent = streakCount;
+                
+                const messages = ['🎉 מדהים!', '⭐ מושלם!', '🌟 מעולה!', '💫 פנטסטי!', '🎊 יפה מאוד!'];
+                feedback.textContent = messages[Math.floor(Math.random() * messages.length)];
+                feedback.className = 'feedback correct';
+                
+                createCelebration();
+                createStars();
+                
+                // Check for capybara reward (every 3 correct answers)
+                if (correctStreak >= 3) {
+                    correctStreak = 0;
+                    addCapybara();
+                }
+                
+                updateCapybaraProgress();
+                setTimeout(generateQuestion, 1500);
+            } else {
+                streakCount = 0;
+                correctStreak = 0;
+                document.getElementById('streak').textContent = streakCount;
+                
+                feedback.textContent = `💪 נסי שוב! ${currentNum1} × ${currentNum2} = ${correctAnswer}`;
+                feedback.className = 'feedback incorrect';
+                
+                updateCapybaraProgress();
+                setTimeout(generateQuestion, 2500);
+            }
+        }
+
+        function skipQuestion() {
+            const feedback = document.getElementById('feedback');
+            feedback.textContent = `התשובה הייתה ${correctAnswer}. בואי ננסה עוד אחת!`;
+            feedback.className = 'feedback';
+            
+            correctStreak = 0;
+            updateCapybaraProgress();
+            
+            setTimeout(generateQuestion, 1500);
+        }
+
+        function createCelebration() {
+            const emojis = ['🎉', '⭐', '🌟', '💫', '✨', '🎊', '🏆'];
+            const celebration = document.createElement('div');
+            celebration.className = 'celebration';
+            celebration.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            document.body.appendChild(celebration);
+            
+            setTimeout(() => celebration.remove(), 1000);
+        }
+
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 15; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.textContent = '⭐';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 0.5 + 's';
+                starsContainer.appendChild(star);
+                
+                setTimeout(() => star.remove(), 2000);
+            }
+        }
+
+        function addCapybara() {
+            capybaraCount++;
+            
+            // Add capybara to collection
+            const capybaraGrid = document.getElementById('capybaraGrid');
+            const capybara = document.createElement('div');
+            capybara.className = 'capybara-item';
+            capybara.textContent = '🦫';
+            capybaraGrid.appendChild(capybara);
+            
+            // Show big capybara animation
+            const bigCapybara = document.createElement('div');
+            bigCapybara.className = 'capybara-big';
+            bigCapybara.textContent = '🦫';
+            document.body.appendChild(bigCapybara);
+            setTimeout(() => bigCapybara.remove(), 2000);
+            
+            // Show milestone messages
+            if (capybaraCount === 1) {
+                showMilestone('🎉 הקפיברה הראשונה שלך!');
+            } else if (capybaraCount === 5) {
+                showMilestone('🌟 5 קפיברות! מדהים!');
+            } else if (capybaraCount === 10) {
+                showMilestone('🏆 10 קפיברות! את אלופה!');
+            } else if (capybaraCount === 20) {
+                showMilestone('👑 20 קפיברות! מלכת הכפל!');
+            } else if (capybaraCount % 10 === 0) {
+                showMilestone(`💫 ${capybaraCount} קפיברות! בלתי נתפס!`);
+            }
+        }
+
+        function updateCapybaraProgress() {
+            const remaining = 3 - correctStreak;
+            const progress = document.getElementById('capybaraProgress');
+            
+            if (remaining > 0) {
+                progress.textContent = `עוד ${remaining} נכונות לקפיברה הבאה! 🦫`;
+            } else {
+                progress.textContent = 'קפיברה חדשה בדרך! 🎉';
+            }
+        }
+
+        function showMilestone(message) {
+            const milestone = document.createElement('div');
+            milestone.className = 'milestone-message';
+            milestone.textContent = message;
+            document.body.appendChild(milestone);
+            
+            setTimeout(() => milestone.remove(), 3000);
+        }
+
+        document.getElementById('answerInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkAnswer();
+            }
+        });
+    </script>
+</body>
+</html>
