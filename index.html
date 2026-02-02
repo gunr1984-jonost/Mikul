@@ -174,6 +174,111 @@
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
         }
 
+        .capybara-milestone {
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            animation: popIn 1s ease;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .capybara-milestone:hover {
+            transform: scale(1.05);
+        }
+
+        .capybara-milestone img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .capybara-milestone-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 20px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .capybara-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .capybara-modal.active {
+            display: flex;
+        }
+
+        .capybara-modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .capybara-modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .capybara-modal-close {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 2rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(255,107,157,0.5);
+            transition: all 0.3s ease;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .capybara-modal-close:hover {
+            background: #ff4d7d;
+            transform: scale(1.1) rotate(90deg);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
         @keyframes popIn {
             0% { transform: scale(0) rotate(0deg); }
             50% { transform: scale(1.3) rotate(180deg); }
@@ -303,6 +408,26 @@
             margin: 30px auto;
         }
 
+        .number-pad-row2 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 400px;
+            margin: 15px auto 0;
+        }
+
+        .number-pad-row2 .num-btn:first-child {
+            grid-column: 2; /* Center the 0 button */
+        }
+
+        .number-pad-row3 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 400px;
+            margin: 15px auto 0;
+        }
+
         .num-btn {
             padding: 25px;
             font-size: 2.5rem;
@@ -334,11 +459,20 @@
             background: linear-gradient(135deg, #ff6b9d 0%, #ff4d7d 100%);
             color: white;
             border-color: #ff6b9d;
-            grid-column: span 2;
         }
 
         .num-btn.delete:hover {
             background: linear-gradient(135deg, #ff4d7d 0%, #ff2d5d 100%);
+        }
+
+        .num-btn.check-btn {
+            background: linear-gradient(135deg, var(--success) 0%, #52c41a 100%);
+            color: white;
+            border-color: var(--success);
+        }
+
+        .num-btn.check-btn:hover, .num-btn.check-btn:active {
+            background: linear-gradient(135deg, #52c41a 0%, #389e0d 100%);
         }
 
         .button-group {
@@ -547,6 +681,14 @@
                 max-width: 500px;
                 gap: 20px;
             }
+            .number-pad-row2 {
+                max-width: 500px;
+                gap: 20px;
+            }
+            .number-pad-row3 {
+                max-width: 500px;
+                gap: 20px;
+            }
             .num-btn {
                 padding: 35px;
                 font-size: 3rem;
@@ -570,9 +712,20 @@
             .capybara-title { font-size: 1.8rem; }
             .capybara-title .emoji { font-size: 2.2rem; }
             .capybara-item { font-size: 3.5rem; }
+            .capybara-item img { width: 80px !important; height: 80px !important; }
             .capybara-progress { font-size: 1.3rem; }
             .capybara-big { font-size: 18rem; }
+            .capybara-big img { width: 400px !important; height: 400px !important; }
+            .capybara-milestone { max-width: 600px; }
+            .capybara-milestone-badge { font-size: 2rem; padding: 20px 40px; }
             .milestone-message { font-size: 2.5rem; padding: 40px 60px; }
+            .capybara-modal-close { 
+                width: 60px; 
+                height: 60px; 
+                font-size: 2.5rem;
+                top: -20px;
+                right: -20px;
+            }
         }
     </style>
 </head>
@@ -607,8 +760,11 @@
             </div>
             <div class="capybara-grid" id="capybaraGrid">
             </div>
+            <div id="capybaraMilestoneContainer"></div>
             <div class="capybara-progress" id="capybaraProgress">
                 עני נכון ל-3 שאלות כדי לקבל קפיברה!
+            </div>
+            <div style="text-align: center; margin-top: 20px;" id="exchangeButtonContainer">
             </div>
         </div>
 
@@ -642,13 +798,15 @@
                 <button class="num-btn" onclick="addDigit('7')">7</button>
                 <button class="num-btn" onclick="addDigit('8')">8</button>
                 <button class="num-btn" onclick="addDigit('9')">9</button>
-                <button class="num-btn" onclick="addDigit('0')">0</button>
-                <button class="num-btn delete" onclick="deleteDigit()">← מחק</button>
             </div>
             
-            <div class="button-group">
-                <button class="btn btn-check" onclick="checkAnswer()">✓ בדקי</button>
-                <button class="btn btn-skip" onclick="skipQuestion()">דלגי →</button>
+            <div class="number-pad-row2">
+                <button class="num-btn" onclick="addDigit('0')">0</button>
+            </div>
+            
+            <div class="number-pad-row3">
+                <button class="num-btn delete" onclick="deleteDigit()">מחק</button>
+                <button class="num-btn check-btn" onclick="checkAnswer()">✓ בדקי</button>
             </div>
             
             <div style="text-align: center; margin-top: 20px;">
@@ -661,6 +819,13 @@
 
     <div class="stars" id="stars"></div>
 
+    <div class="capybara-modal" id="capybaraModal">
+        <div class="capybara-modal-content">
+            <button class="capybara-modal-close" onclick="closeCapybaraModal()">×</button>
+            <img id="capybaraModalImage" src="" alt="Capybara">
+        </div>
+    </div>
+
     <script>
         let currentNum1, currentNum2, correctAnswer;
         let correctCount = 0, totalCount = 0, streakCount = 0;
@@ -669,6 +834,7 @@
         let capybaraCount = 0;
         let correctStreak = 0; // Track correct answers for capybara rewards
         let userAnswer = ''; // Track user's current answer
+        let bigCapybaraCount = 0; // Track number of big capybara images collected
 
         function startMode(selectedMode) {
             mode = 'random';
@@ -807,32 +973,141 @@
         function addCapybara() {
             capybaraCount++;
             
-            // Add capybara to collection
+            // Add capybara image to collection
             const capybaraGrid = document.getElementById('capybaraGrid');
             const capybara = document.createElement('div');
             capybara.className = 'capybara-item';
-            capybara.textContent = '🦫';
+            
+            // Use all 28 local capybara images - rotating through different cute capybara images
+            const capybaraImages = [
+                'capybara 1.jpg', 'capybara 2.jpg', 'capybara 3.jpg', 'capybara 4.jpg',
+                'capybara 5.jpg', 'capybara 6.jpg', 'capybara 7.jpg', 'capybara 8.jpg',
+                'capybara 9.jpg', 'capybara 10.jpg', 'capybara 11.jpg', 'capybara 12.jpg',
+                'capybara 13.jpg', 'capybara 14.jpg', 'capybara 15.jpg', 'capybara 16.jpg',
+                'capybara 17.jpg', 'capybara 18.jpg', 'capybara 19.jpg', 'capybara 20.jpg',
+                'capybara 21.jpg', 'capybara 22.jpg', 'capybara 23.jpg', 'capybara 24.jpg',
+                'capybara 25.jpg', 'capybara 26.jpg', 'capybara 27.jpg', 'capybara 28.jpg'
+            ];
+            
+            const img = document.createElement('img');
+            const imageSrc = capybaraImages[(capybaraCount - 1) % capybaraImages.length];
+            img.src = imageSrc;
+            img.style.width = '60px';
+            img.style.height = '60px';
+            img.style.borderRadius = '15px';
+            img.style.objectFit = 'cover';
+            img.style.border = '3px solid var(--accent)';
+            img.style.cursor = 'pointer';
+            img.style.transition = 'transform 0.2s ease';
+            
+            // Add hover effect
+            img.onmouseover = function() { this.style.transform = 'scale(1.1)'; };
+            img.onmouseout = function() { this.style.transform = 'scale(1)'; };
+            
+            // Add click to open modal
+            img.onclick = function() { openCapybaraModal(imageSrc); };
+            
+            capybara.appendChild(img);
             capybaraGrid.appendChild(capybara);
             
-            // Show big capybara animation
+            // Show big capybara animation with image
             const bigCapybara = document.createElement('div');
             bigCapybara.className = 'capybara-big';
-            bigCapybara.textContent = '🦫';
+            const bigImg = document.createElement('img');
+            bigImg.src = imageSrc;
+            bigImg.style.width = '300px';
+            bigImg.style.height = '300px';
+            bigImg.style.borderRadius = '50px';
+            bigImg.style.objectFit = 'cover';
+            bigImg.style.border = '10px solid var(--primary)';
+            bigCapybara.appendChild(bigImg);
             document.body.appendChild(bigCapybara);
             setTimeout(() => bigCapybara.remove(), 2000);
             
-            // Show milestone messages
+            // Show milestone message
             if (capybaraCount === 1) {
                 showMilestone('🎉 הקפיברה הראשונה שלך!');
-            } else if (capybaraCount === 5) {
-                showMilestone('🌟 5 קפיברות! מדהימה!');
-            } else if (capybaraCount === 10) {
-                showMilestone('🏆 10 קפיברות! את אלופה!');
-            } else if (capybaraCount === 20) {
-                showMilestone('👑 20 קפיברות! מלכת הכפל!');
             } else if (capybaraCount % 10 === 0) {
-                showMilestone(`💫 ${capybaraCount} קפיברות! בלתי נתפסת!`);
+                showMilestone(`🌟 ${capybaraCount} קפיברות! תוכלי להחליף אותן!`);
             }
+            
+            // Update exchange button
+            updateExchangeButton();
+        }
+
+        function updateExchangeButton() {
+            const container = document.getElementById('exchangeButtonContainer');
+            
+            if (capybaraCount >= 10) {
+                const canExchange = Math.floor(capybaraCount / 10);
+                container.innerHTML = `
+                    <button class="btn" style="background: linear-gradient(135deg, var(--secondary) 0%, #ffa940 100%); color: white; padding: 20px 50px; font-size: 1.5rem; box-shadow: 0 8px 25px rgba(255,199,95,0.4);" onclick="exchangeCapybaras()">
+                        🎁 החליפי 10 קפיברות בתמונה מיוחדת!
+                    </button>
+                `;
+            } else {
+                container.innerHTML = '';
+            }
+        }
+
+        function exchangeCapybaras() {
+            if (capybaraCount < 10) {
+                return;
+            }
+            
+            // Deduct 10 capybaras
+            capybaraCount -= 10;
+            bigCapybaraCount++;
+            
+            // Remove 10 capybaras from grid
+            const capybaraGrid = document.getElementById('capybaraGrid');
+            for (let i = 0; i < 10; i++) {
+                if (capybaraGrid.lastChild) {
+                    capybaraGrid.removeChild(capybaraGrid.lastChild);
+                }
+            }
+            
+            // Show random funny capybara image from all 28 local files
+            const funnyCapybaraImages = [
+                'capybara 1.jpg', 'capybara 2.jpg', 'capybara 3.jpg', 'capybara 4.jpg',
+                'capybara 5.jpg', 'capybara 6.jpg', 'capybara 7.jpg', 'capybara 8.jpg',
+                'capybara 9.jpg', 'capybara 10.jpg', 'capybara 11.jpg', 'capybara 12.jpg',
+                'capybara 13.jpg', 'capybara 14.jpg', 'capybara 15.jpg', 'capybara 16.jpg',
+                'capybara 17.jpg', 'capybara 18.jpg', 'capybara 19.jpg', 'capybara 20.jpg',
+                'capybara 21.jpg', 'capybara 22.jpg', 'capybara 23.jpg', 'capybara 24.jpg',
+                'capybara 25.jpg', 'capybara 26.jpg', 'capybara 27.jpg', 'capybara 28.jpg'
+            ];
+            
+            const randomImage = funnyCapybaraImages[Math.floor(Math.random() * funnyCapybaraImages.length)];
+            showCapybaraMilestoneImage(randomImage, `תמונה מיוחדת #${bigCapybaraCount}! 🎉`);
+            showMilestone(`🎊 קיבלת תמונת קפיברה מיוחדת!`);
+            
+            // Update exchange button
+            updateExchangeButton();
+        }
+
+        function showCapybaraMilestoneImage(imageUrl, text) {
+            const container = document.getElementById('capybaraMilestoneContainer');
+            
+            // Clear previous milestone
+            container.innerHTML = '';
+            
+            const milestone = document.createElement('div');
+            milestone.className = 'capybara-milestone';
+            milestone.style.cursor = 'pointer';
+            milestone.onclick = function() { openCapybaraModal(imageUrl); };
+            
+            const img = document.createElement('img');
+            img.src = imageUrl;
+            img.alt = 'Capybara Milestone';
+            
+            const badge = document.createElement('div');
+            badge.className = 'capybara-milestone-badge';
+            badge.textContent = text;
+            
+            milestone.appendChild(img);
+            milestone.appendChild(badge);
+            container.appendChild(milestone);
         }
 
         function updateCapybaraProgress() {
@@ -861,6 +1136,25 @@
             
             setTimeout(() => milestone.remove(), 3000);
         }
+
+        function openCapybaraModal(imageSrc) {
+            const modal = document.getElementById('capybaraModal');
+            const modalImage = document.getElementById('capybaraModalImage');
+            modalImage.src = imageSrc;
+            modal.classList.add('active');
+        }
+
+        function closeCapybaraModal() {
+            const modal = document.getElementById('capybaraModal');
+            modal.classList.remove('active');
+        }
+
+        // Close modal when clicking outside the image
+        document.getElementById('capybaraModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCapybaraModal();
+            }
+        });
     </script>
 </body>
 </html>
