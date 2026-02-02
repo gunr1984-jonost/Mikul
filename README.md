@@ -12,6 +12,6 @@ An interactive multiplication learning game designed for an 8-year-old Hebrew sp
 - **Responsive design** - Optimized for iPad Pro (11" & 12.9")
 
 ## Tech Stack
-Pure HTML/CSS/JavaScript • Unsplash API for capybara images • No dependencies
+Pure HTML/CSS/JavaScript • No dependencies
 
-Perfect for young learners who love capybaras and need motivation to practice multiplication! 🎯
+Perfect for young learners who love capybaras and need motivation to practice multiplication! 
