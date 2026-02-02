@@ -269,6 +269,190 @@
             transform: scale(1.1) rotate(90deg);
         }
 
+        .instructions-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .instructions-modal.active {
+            display: flex;
+        }
+
+        .instructions-content {
+            background: linear-gradient(135deg, #fff 0%, #fff5f7 100%);
+            padding: 40px;
+            border-radius: 30px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: zoomIn 0.3s ease;
+        }
+
+        .instructions-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(255,107,157,0.4);
+            transition: all 0.3s ease;
+        }
+
+        .instructions-close:hover {
+            background: #ff4d7d;
+            transform: scale(1.1) rotate(90deg);
+        }
+
+        .instructions-title {
+            font-size: 2.5rem;
+            color: var(--purple);
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .instructions-rule {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border-right: 5px solid var(--accent);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .instructions-rule-title {
+            font-size: 1.4rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .instructions-rule-text {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .help-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 2rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255,199,95,0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .help-button:hover {
+            background: #ffa940;
+            transform: scale(1.1);
+        }
+
+        .video-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3500;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .video-modal.active {
+            display: flex;
+        }
+
+        .video-modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .video-modal-content video {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .video-modal-close {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 2rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(255,107,157,0.5);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .video-modal-close:hover {
+            background: #ff4d7d;
+            transform: scale(1.1) rotate(90deg);
+        }
+
+        .video-badge {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 20px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -726,6 +910,37 @@
                 top: -20px;
                 right: -20px;
             }
+            .help-button {
+                width: 60px;
+                height: 60px;
+                font-size: 2.5rem;
+                top: 25px;
+                left: 25px;
+            }
+            .instructions-content {
+                padding: 50px;
+                max-width: 700px;
+            }
+            .instructions-title {
+                font-size: 3rem;
+            }
+            .instructions-rule-title {
+                font-size: 1.6rem;
+            }
+            .instructions-rule-text {
+                font-size: 1.4rem;
+            }
+            .video-modal-close {
+                width: 60px;
+                height: 60px;
+                font-size: 2.5rem;
+                top: -20px;
+                right: -20px;
+            }
+            .video-badge {
+                font-size: 2.2rem;
+                padding: 20px 50px;
+            }
         }
     </style>
 </head>
@@ -762,7 +977,7 @@
             </div>
             <div id="capybaraMilestoneContainer"></div>
             <div class="capybara-progress" id="capybaraProgress">
-                עני נכון ל-3 שאלות כדי לקבל קפיברה!
+                עוד 3 תשובות נכונות לקפיברה הבאה! 🦫
             </div>
             <div style="text-align: center; margin-top: 20px;" id="exchangeButtonContainer">
             </div>
@@ -810,7 +1025,7 @@
             </div>
             
             <div style="text-align: center; margin-top: 20px;">
-                <button class="btn" style="background: linear-gradient(135deg, var(--purple) 0%, #8b44ab 100%); color: white; padding: 15px 40px; font-size: 1.2rem;" onclick="goBackToMenu()">🏠 חזרה לתפריט</button>
+                <button class="btn" style="background: linear-gradient(135deg, var(--purple) 0%, #8b44ab 100%); color: white; padding: 15px 40px; font-size: 1.2rem;" onclick="goBackToMenu()">🏠 חזרה לאוסף הקפיברות שלי</button>
             </div>
             
             <div class="feedback" id="feedback"></div>
@@ -819,10 +1034,82 @@
 
     <div class="stars" id="stars"></div>
 
+    <button class="help-button" id="helpButton" onclick="showInstructions()" style="display: none;">?</button>
+
     <div class="capybara-modal" id="capybaraModal">
         <div class="capybara-modal-content">
             <button class="capybara-modal-close" onclick="closeCapybaraModal()">×</button>
             <img id="capybaraModalImage" src="" alt="Capybara">
+        </div>
+    </div>
+
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <button class="video-modal-close" onclick="closeVideoModal()">×</button>
+            <div class="video-badge" id="videoBadge">סרטון מיוחד!</div>
+            <video id="rewardVideo" controls autoplay>
+                <source src="" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <div class="instructions-modal" id="instructionsModal">
+        <div class="instructions-content">
+            <button class="instructions-close" onclick="closeInstructions()">×</button>
+            <div class="instructions-title">🦫 איך לשחק?</div>
+            
+            <div class="instructions-rule">
+                <div class="instructions-rule-title">🎯 מטרת המשחק</div>
+                <div class="instructions-rule-text">
+                    פתרי תרגילי כפל (1-10) וצברי קפיברות חמודות!
+                </div>
+            </div>
+
+            <div class="instructions-rule">
+                <div class="instructions-rule-title">🦫 איך מרוויחים קפיברה?</div>
+                <div class="instructions-rule-text">
+                    כל 3 תשובות נכונות = קפיברה אחת! <br>
+                    כל קפיברה היא תמונה שונה וחמודה.
+                </div>
+            </div>
+
+            <div class="instructions-rule">
+                <div class="instructions-rule-title">🎬 החלפת קפיברות</div>
+                <div class="instructions-rule-text">
+                    כשיש לך 10 קפיברות, את יכולה להחליף אותן בסרטון פרס מיוחד!<br>
+                    כל פעם תקבלי סרטון אחר מפתיע עם קפיברות חמודות.
+                </div>
+            </div>
+
+            <div class="instructions-rule">
+                <div class="instructions-rule-title">🖼️ צפייה בקפיברות</div>
+                <div class="instructions-rule-text">
+                    לחצי על כל קפיברה באוסף כדי לראות אותה בגדול!
+                </div>
+            </div>
+
+            <div class="instructions-rule">
+                <div class="instructions-rule-title">🔢 איך למלא תשובה?</div>
+                <div class="instructions-rule-text">
+                    השתמשי בלוח המספרים למטה:<br>
+                    • הקלידי את התשובה<br>
+                    • לחצי "מחקי" למחוק<br>
+                    • לחצי "✓ בדקי" לבדוק את התשובה
+                </div>
+            </div>
+
+            <div class="instructions-rule">
+                <div class="instructions-rule-title">💡 טיפ</div>
+                <div class="instructions-rule-text">
+                    אם טעית - אל תדאגי! תראי את התשובה הנכונה ותנסי שוב.
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn" style="background: var(--success); color: white; padding: 15px 40px; font-size: 1.3rem;" onclick="closeInstructions()">
+                    בואי נתחיל! 🚀
+                </button>
+            </div>
         </div>
     </div>
 
@@ -835,6 +1122,8 @@
         let correctStreak = 0; // Track correct answers for capybara rewards
         let userAnswer = ''; // Track user's current answer
         let bigCapybaraCount = 0; // Track number of big capybara images collected
+        let usedCapybaraImages = []; // Track which capybara images have been used to avoid duplicates
+        let usedVideos = []; // Track which reward videos have been shown to avoid duplicates
 
         function startMode(selectedMode) {
             mode = 'random';
@@ -982,7 +1271,7 @@
             const capybara = document.createElement('div');
             capybara.className = 'capybara-item';
             
-            // Use all 28 local capybara images - RANDOM selection
+            // Use all 28 local capybara images - RANDOM selection (no repeats until all used)
             const capybaraImages = [
                 'capybara 1.jpg', 'capybara 2.jpg', 'capybara 3.jpg', 'capybara 4.jpg',
                 'capybara 5.jpg', 'capybara 6.jpg', 'capybara 7.jpg', 'capybara 8.jpg',
@@ -993,10 +1282,23 @@
                 'capybara 25.jpg', 'capybara 26.jpg', 'capybara 27.jpg', 'capybara 28.jpg'
             ];
             
-            // Select RANDOM capybara image
-            const randomIndex = Math.floor(Math.random() * capybaraImages.length);
-            const imageSrc = capybaraImages[randomIndex];
-            console.log(`Capybara #${capybaraCount}: Selected random image ${randomIndex + 1} - ${imageSrc}`);
+            // Get available images (not yet used)
+            let availableImages = capybaraImages.filter(img => !usedCapybaraImages.includes(img));
+            
+            // If all images used, reset the list
+            if (availableImages.length === 0) {
+                usedCapybaraImages = [];
+                availableImages = [...capybaraImages];
+            }
+            
+            // Select RANDOM capybara image from available ones
+            const randomIndex = Math.floor(Math.random() * availableImages.length);
+            const imageSrc = availableImages[randomIndex];
+            
+            // Mark this image as used
+            usedCapybaraImages.push(imageSrc);
+            
+            console.log(`Capybara #${capybaraCount}: Selected ${imageSrc} (${usedCapybaraImages.length}/28 used)`);
             
             const img = document.createElement('img');
             img.src = imageSrc;
@@ -1050,7 +1352,7 @@
                 const canExchange = Math.floor(capybaraCount / 10);
                 container.innerHTML = `
                     <button class="btn" style="background: linear-gradient(135deg, var(--secondary) 0%, #ffa940 100%); color: white; padding: 20px 50px; font-size: 1.5rem; box-shadow: 0 8px 25px rgba(255,199,95,0.4);" onclick="exchangeCapybaras()">
-                        🎁 החליפי 10 קפיברות בתמונה מיוחדת!
+                        🎬 החליפי 10 קפיברות בסרטון מיוחד!
                     </button>
                 `;
             } else {
@@ -1075,20 +1377,33 @@
                 }
             }
             
-            // Show random funny capybara image from all 28 local files
-            const funnyCapybaraImages = [
-                'capybara 1.jpg', 'capybara 2.jpg', 'capybara 3.jpg', 'capybara 4.jpg',
-                'capybara 5.jpg', 'capybara 6.jpg', 'capybara 7.jpg', 'capybara 8.jpg',
-                'capybara 9.jpg', 'capybara 10.jpg', 'capybara 11.jpg', 'capybara 12.jpg',
-                'capybara 13.jpg', 'capybara 14.jpg', 'capybara 15.jpg', 'capybara 16.jpg',
-                'capybara 17.jpg', 'capybara 18.jpg', 'capybara 19.jpg', 'capybara 20.jpg',
-                'capybara 21.jpg', 'capybara 22.jpg', 'capybara 23.jpg', 'capybara 24.jpg',
-                'capybara 25.jpg', 'capybara 26.jpg', 'capybara 27.jpg', 'capybara 28.jpg'
+            // Show random reward video (no repeats until all shown)
+            const rewardVideos = [
+                'video1.mp4', 'video2.mp4', 'video3.mp4', 'video4.mp4',
+                'video5.mp4', 'video6.mp4', 'video7.mp4', 'video8.mp4'
             ];
             
-            const randomImage = funnyCapybaraImages[Math.floor(Math.random() * funnyCapybaraImages.length)];
-            showCapybaraMilestoneImage(randomImage, `תמונה מיוחדת #${bigCapybaraCount}! 🎉`);
-            showMilestone(`🎊 קיבלת תמונת קפיברה מיוחדת!`);
+            // Get available videos (not yet shown)
+            let availableVideos = rewardVideos.filter(vid => !usedVideos.includes(vid));
+            
+            // If all videos shown, reset the list
+            if (availableVideos.length === 0) {
+                usedVideos = [];
+                availableVideos = [...rewardVideos];
+            }
+            
+            // Select random video from available ones
+            const randomIndex = Math.floor(Math.random() * availableVideos.length);
+            const videoSrc = availableVideos[randomIndex];
+            
+            // Mark this video as used
+            usedVideos.push(videoSrc);
+            
+            console.log(`Exchange #${bigCapybaraCount}: Playing ${videoSrc} (${usedVideos.length}/8 videos shown)`);
+            
+            // Play the reward video
+            playRewardVideo(videoSrc, `סרטון פרס #${bigCapybaraCount}! 🎉`);
+            showMilestone(`🎊 קיבלת סרטון פרס מיוחד!`);
             
             // Update exchange button
             updateExchangeButton();
@@ -1123,7 +1438,7 @@
             const progress = document.getElementById('capybaraProgress');
             
             if (remaining > 0) {
-                progress.textContent = `עוד ${remaining} נכונות לקפיברה הבאה! 🦫`;
+                progress.textContent = `עוד ${remaining} תשובות נכונות לקפיברה הבאה! 🦫`;
             } else {
                 progress.textContent = 'קפיברה חדשה בדרך! 🎉';
             }
@@ -1157,10 +1472,74 @@
             modal.classList.remove('active');
         }
 
+        function playRewardVideo(videoSrc, badgeText) {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('rewardVideo');
+            const badge = document.getElementById('videoBadge');
+            
+            video.src = videoSrc;
+            badge.textContent = badgeText;
+            modal.classList.add('active');
+            video.play();
+            
+            // Auto-close when video ends (optional)
+            video.onended = function() {
+                // Don't auto-close, let user close manually
+                // closeVideoModal();
+            };
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('rewardVideo');
+            
+            video.pause();
+            video.currentTime = 0;
+            modal.classList.remove('active');
+        }
+
         // Close modal when clicking outside the image
         document.getElementById('capybaraModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeCapybaraModal();
+            }
+        });
+
+        function showInstructions() {
+            const modal = document.getElementById('instructionsModal');
+            modal.classList.add('active');
+        }
+
+        function closeInstructions() {
+            const modal = document.getElementById('instructionsModal');
+            modal.classList.remove('active');
+            // Mark that instructions have been shown
+            localStorage.setItem('instructionsShown', 'true');
+        }
+
+        // Show instructions on first visit
+        window.addEventListener('load', function() {
+            const instructionsShown = localStorage.getItem('instructionsShown');
+            if (!instructionsShown) {
+                setTimeout(() => {
+                    showInstructions();
+                }, 500);
+            }
+            // Show help button on all pages except when game is active
+            document.getElementById('helpButton').style.display = 'flex';
+        });
+
+        // Close instructions modal when clicking outside
+        document.getElementById('instructionsModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeInstructions();
+            }
+        });
+
+        // Close video modal when clicking outside
+        document.getElementById('videoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVideoModal();
             }
         });
     </script>
