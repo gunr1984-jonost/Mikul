@@ -805,7 +805,7 @@
             </div>
             
             <div class="number-pad-row3">
-                <button class="num-btn delete" onclick="deleteDigit()">מחק</button>
+                <button class="num-btn delete" onclick="deleteDigit()">מחקי</button>
                 <button class="num-btn check-btn" onclick="checkAnswer()">✓ בדקי</button>
             </div>
             
@@ -927,7 +927,11 @@
                 correctStreak = 0;
                 document.getElementById('streak').textContent = streakCount;
                 
-                feedback.textContent = `💪 נסי שוב! ${currentNum1} × ${currentNum2} = ${correctAnswer}`;
+                feedback.innerHTML = `
+                    <div style="color: var(--primary); font-size: 1.8rem; margin-bottom: 10px;">❌ טעות!</div>
+                    <div style="color: #666; font-size: 1.4rem; margin-bottom: 8px;">התשובה הנכונה:</div>
+                    <div style="color: var(--purple); font-size: 2.5rem; font-weight: 700; direction: ltr;">${currentNum1} × ${currentNum2} = <span style="color: var(--success);">${correctAnswer}</span></div>
+                `;
                 feedback.className = 'feedback incorrect';
                 
                 updateCapybaraProgress();
@@ -992,6 +996,7 @@
             // Select RANDOM capybara image
             const randomIndex = Math.floor(Math.random() * capybaraImages.length);
             const imageSrc = capybaraImages[randomIndex];
+            console.log(`Capybara #${capybaraCount}: Selected random image ${randomIndex + 1} - ${imageSrc}`);
             
             const img = document.createElement('img');
             img.src = imageSrc;
