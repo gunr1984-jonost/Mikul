@@ -978,7 +978,7 @@
             const capybara = document.createElement('div');
             capybara.className = 'capybara-item';
             
-            // Use all 28 local capybara images - rotating through different cute capybara images
+            // Use all 28 local capybara images - RANDOM selection
             const capybaraImages = [
                 'capybara 1.jpg', 'capybara 2.jpg', 'capybara 3.jpg', 'capybara 4.jpg',
                 'capybara 5.jpg', 'capybara 6.jpg', 'capybara 7.jpg', 'capybara 8.jpg',
@@ -989,8 +989,11 @@
                 'capybara 25.jpg', 'capybara 26.jpg', 'capybara 27.jpg', 'capybara 28.jpg'
             ];
             
+            // Select RANDOM capybara image
+            const randomIndex = Math.floor(Math.random() * capybaraImages.length);
+            const imageSrc = capybaraImages[randomIndex];
+            
             const img = document.createElement('img');
-            const imageSrc = capybaraImages[(capybaraCount - 1) % capybaraImages.length];
             img.src = imageSrc;
             img.style.width = '60px';
             img.style.height = '60px';
